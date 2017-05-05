@@ -11,13 +11,13 @@ class abundant_number():
                     sum_of_fac += n/i
 
         if sum_of_fac > n:
-            return 'abundant number'
+            return True 
 
     def listify_the_sum_of_two_abundant_numbers(self, n):
         
         abundant_numbers = []
         for i in range(1, n):
-            if abundant_number.abundant_or_not(self, i) == 'abundant number':
+            if abundant_number.abundant_or_not(self, i):
                 abundant_numbers.append(i)
 
         self.sum_of_two = set()
