@@ -43,8 +43,7 @@ def digit_cancel(nominator, denominator):
 def find_digit_canceling_fractions():
     
     for nominator in range(10, 100):
-
-        # initiate 'nominator'
+        # initiate 'denominator'
         denominator = nominator+1
 
         while denominator < 100:
@@ -58,7 +57,6 @@ def find_digit_canceling_fractions():
                         'digit_canceled_denominator' : digit_cancel_value['digit_canceled_denominator'],
                     }
                     yield result
-
             denominator += 1
 
 def simplify_fraction(nominator, denominator):
@@ -71,11 +69,11 @@ def simplify_fraction(nominator, denominator):
             while (not nominator%n and not denominator%n):
                 nominator /= n
                 denominator /= n
-
             result = {
                 'nominator' : nominator,
                 'denominator' : denominator
             }
+
             return result
 
 def main():
@@ -88,6 +86,7 @@ def main():
         product_of_denominator *= fraction['digit_canceled_denominator']
         
     answer = simplify_fraction(product_of_nominator, product_of_denominator)
+    
     print(answer['denominator'])
     return answer['denominator']
 
