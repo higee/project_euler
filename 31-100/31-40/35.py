@@ -32,8 +32,9 @@ def main():
     check_list = set()
 
     for i in range(2, 1000000):
-
+        # in case we have only checked the number
         if i in check_list:
+            # continue the loop to reduce computation
             continue
 
         outcome = check_circular_prime(i)
