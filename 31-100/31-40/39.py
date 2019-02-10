@@ -2,39 +2,30 @@ import math
 
 def main():
 
-    # initialize cnt and p with the values given
-    max_cnt, max_p = 3, 10
+    max_sum_of_two_sides = 600
+    duplicate_check_list = []
+    cnt_list = []
 
-    for p in range(12, 1001):
-        # initialize count every time p gets updated
-        cnt = 0
-        # c : hypotenuse
-        min_c, max_c = round(p/3)+1, p-1
-
-        for c in range(min_c, max_c):
-
-            b_list = []
-            a = c-1
-            if a+c >= p:
+    for a in range(1, max_sum_of_two_sides):
+        for b in range(1, max_sum_of_two_sides-a):
+            c = math.sqrt(a**2+b**2)
+            if c.is_integer():
+                c = int(c)
+                p = a+b+c
+                if p <= 1000:
+                    sorted_sides_of_triangle = sorted((a, b, c))
+                    if sorted_sides_of_triangle in duplicate_check_list:
+                        continue
+                    else:
+                        cnt_list.append(p)
+                        duplicate_check_list.append(sorted_sides_of_triangle)
+            else:
                 continue
-
-            while (a not in b_list) and (a > 0):
-                b = p-(c+a)
-                b_list.append(b)
-                
-                if c**2 == a**2+b**2:
-                    cnt +=1
-                    # there exists only one pair of (a, b) per c
-                    break
-
-                a -= 1
-
-        # update stats
-        if cnt > max_cnt:
-            max_cnt = cnt
-            max_p = p
-
-    return max_cnt, max_p
     
+    result = dict((perimeter, cnt_list.count(perimeter)) for perimeter in set(cnt_list))
+    answer = max(result, key=lambda x: result[x])    
+
+    return answer
+
 if __name__ == "__main__":
     print(main())
