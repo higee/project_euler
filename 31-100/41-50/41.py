@@ -24,7 +24,7 @@ def get_previous_pandigital(n):
             
             return new_number
         
-    new_number = int(str_n[1:])
+    new_number = int(inverse_n[:-1])
     return new_number
 
 def main():
