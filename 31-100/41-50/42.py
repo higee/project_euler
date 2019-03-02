@@ -44,4 +44,5 @@ def main():
 
     return answer
 
-print(main())
+if __name__ == "__main__":
+   print(main())
